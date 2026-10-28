@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --surface-2: #efede8;
+  --ink: #1c1b19;
+  --muted: #6b6860;
+  --line: #e2dfd8;
+  --accent: #1f6f5c;
+  --accent-hover: #185a4b;
+  --accent-fg: #ffffff;
+  --danger: #b42318;
+  --danger-bg: #fdecea;
+  --ok: #157347;
+  --ok-bg: #e7f5ee;
+  --warn: #8a5a00;
+  --warn-bg: #fff4dc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121211;
+    --surface: #1b1b19;
+    --surface-2: #252522;
+    --ink: #f1efea;
+    --muted: #a19d93;
+    --line: #2f2f2b;
+    --accent: #4fb89c;
+    --accent-hover: #6cc9b0;
+    --accent-fg: #0d1f1a;
+    --danger: #ff8a80;
+    --danger-bg: #3a1714;
+    --ok: #6fd3a2;
+    --ok-bg: #12301f;
+    --warn: #f5c66b;
+    --warn-bg: #33270d;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-ok: var(--ok);
+  --color-ok-bg: var(--ok-bg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply bg-accent text-accent-fg hover:bg-accent-hover;
+  }
+  .btn-secondary {
+    @apply border border-line bg-surface text-ink hover:bg-surface-2;
+  }
+  .btn-danger {
+    @apply border border-danger/40 bg-surface text-danger hover:bg-danger-bg;
+  }
+  .input {
+    @apply w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent focus:outline-2 focus:outline-accent/30;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-surface p-6;
+  }
+  .alert {
+    @apply rounded-xl px-4 py-3 text-sm;
+  }
+  .alert-error {
+    @apply bg-danger-bg text-danger;
+  }
+  .alert-ok {
+    @apply bg-ok-bg text-ok;
+  }
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-surface-2;
+  }
+}
